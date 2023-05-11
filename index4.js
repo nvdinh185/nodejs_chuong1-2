@@ -3,33 +3,47 @@ const app = express();
 const path = require('path');
 const port = 3000;
 
+app.use(express.urlencoded({ extended: true, }));
+app.use(express.json());
+
 const users = [
     {
-        id: 1,
-        username: 'user1',
-        password: '123'
+        username: 'dinh',
+        password: '123',
+        fullname: 'Nguyen Van Dinh'
     }
 ];
+
+const findUserInList = (obj, usersList) => {
+    for (const user of usersList) {
+        if (user.username === obj.username
+            && user.password === obj.password) {
+            return user;
+        }
+    }
+    return null;
+}
 
 const publicPath = path.join(__dirname, 'client');
 app.use(express.static(publicPath));
 
 app.post('/sign-up', (req, res) => {
-    console.log(req.params);
-    res.sendFile(path.join(publicPath, 'home.html'));
+    users.push(req.body);
+    res.send(users);
 })
 
 app.post('/sign-in', (req, res) => {
-    var address = req.query.address;
+    var user = req.body;
 
-    var newStudents = students.filter(function (st) {
-        return st.address === address;
-    })
-    res.send(newStudents);
+    if (findUserInList(user, users)) {
+        res.send({ status: 'OK' });
+    } else {
+        res.send({ status: 'NOK' });
+    }
 })
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(publicPath, 'index.html'));
+    res.sendFile(publicPath, 'index.html');
 });
 
 app.listen(port, () => {

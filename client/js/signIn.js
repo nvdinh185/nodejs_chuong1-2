@@ -1,14 +1,25 @@
-async function getData() {
+var form = document.forms['signin-form'];
 
-    try {
-        var listNews = await axios.get('http://localhost:3000/students2?address=hue');
-        listNews = listNews.data;
+form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-        console.log(listNews);
-
-    } catch (err) {
-        console.log('Lỗi ' + err);
+    const formValue = {};
+    for (const el of e.target) {
+        if (el.name) {
+            formValue[el.name] = el.value;
+        }
     }
-}
 
-// getData();
+    // console.log(formValue);
+
+    var results = await axios({
+        method: "POST",
+        url: 'http://localhost:3000/sign-in',
+        data: formValue,
+        headers: { "Content-Type": "application/json" },
+    });
+
+    console.log(results.data);
+
+    // location = 'index.html';
+})
