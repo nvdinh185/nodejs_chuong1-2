@@ -23,7 +23,7 @@ app.post('/sign-up', (req, res) => {
 })
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(publicPath, 'index.html'));
+    res.sendFile(publicPath, 'index.html');
 });
 
 app.listen(port, () => {
