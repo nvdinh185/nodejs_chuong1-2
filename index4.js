@@ -27,18 +27,24 @@ const findUserInList = (obj, usersList) => {
 const publicPath = path.join(__dirname, 'client');
 app.use(express.static(publicPath));
 
-app.post('/sign-up', (req, res) => {
-    users.push(req.body);
-    res.send(users);
+app.post('/register', (req, res) => {
+    var user = req.body;
+
+    if (!findUserInList(user, users)) {
+        users.push(user);
+        res.status(200).send({ status: 'OK' });
+    } else {
+        res.status(500).send({ status: 'NOK' });
+    }
 })
 
-app.post('/sign-in', (req, res) => {
+app.post('/login', (req, res) => {
     var user = req.body;
 
     if (findUserInList(user, users)) {
-        res.send({ status: 'OK' });
+        res.status(200).send({ status: 'OK' });
     } else {
-        res.send({ status: 'NOK' });
+        res.status(500).send({ status: 'NOK' });
     }
 })
 

@@ -9,18 +9,22 @@
 </head>
 
 <body>
-    <form id="signin-form">
+    <form id="register-form">
         <label for="username">username</label>
         <input type="text" name="username" id="username">
         <br><br>
         <label for="password">password</label>
         <input type="text" name="password" id="password">
         <br><br>
-        <input type="submit" value="Đăng nhập">
+        <label for="fullname">fullname</label>
+        <input type="text" name="fullname" id="fullname">
+        <br><br>
+        <input type="submit" value="Đăng ký">
     </form>
+    <div class="error"></div>
 
     <script src="lib/axios.min.js"></script>
-    <script src="js/signIn.js"></script>
+    <script src="js/register.js"></script>
 </body>
 
 </html>
