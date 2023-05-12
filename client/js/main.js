@@ -1,4 +1,4 @@
-var form = document.forms.form;
+var form = document.forms['register-form'];
 
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -11,13 +11,16 @@ form.addEventListener('submit', async function (e) {
     }
 
     // console.log(formValue);
+    try {
+        var results = await axios({
+            method: "POST",
+            url: 'http://localhost:3000/register',
+            data: formValue,
+            headers: { "Content-Type": "application/json" },
+        });
 
-    var results = await axios({
-        method: "POST",
-        url: 'http://localhost:3000/sign-up',
-        data: formValue,
-        headers: { "Content-Type": "application/json" },
-    });
-
-    console.log(results.data);
+        console.log(results.data);
+    } catch (error) {
+        console.log('Lỗi: ' + error);
+    }
 })
