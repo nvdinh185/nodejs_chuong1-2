@@ -13,7 +13,7 @@ const users = [
     }
 ]
 
-const publicPath = path.join(__dirname, 'client');
+const publicPath = path.join(__dirname, 'client-users');
 app.use(express.static(publicPath));
 
 app.post('/register', (req, res) => {

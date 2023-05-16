@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>VinaEnter EDU - Đã học là làm được</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<script src="lib/jquery-3.6.3.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#header").load("./inc/header.html");
+			$(".content-left").load("./inc/sidebar.html");
+			$("#footer").load("./inc/footer.html");
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- begin header -->
+		<div id="header"></div>
+		<!-- end header -->
+
+		<!-- begin menu -->
+		<div id="menu">
+			<ul>
+				<li><a href="index.html" title="">Trang chủ</a></li>
+				<li><a href="tintuc.html" title="">Tin tức</a></li>
+				<li><a href="lienhe.html" title="">Liên hệ</a></li>
+			</ul>
+			<div class="clr"></div>
+		</div>
+		<!-- end menu -->
+
+		<!-- begin content -->
+		<div id="content">
+			<div class="content-left fl"></div>
+			<div class="content-right fr">
+				<h3 id="cat-name">Tin tức :: Thời sự</h3>
+				<div class="main-content items-new">
+					<ul id='list-news-by-cat'></ul>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+		<!-- end content -->
+
+		<div id="footer"></div>
+	</div>
+	<script src="lib/axios.min.js"></script>
+	<script src="js/danhmuc.js"></script>
+</body>
+
+</html>

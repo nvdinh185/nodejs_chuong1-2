@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const port = 3000;
-// const cors = require('cors');
-// app.use(cors());
+
+
+const publicPath = path.join(__dirname, 'client-news');
+app.use(express.static(publicPath));
 
 const news = [
     {
@@ -75,10 +78,19 @@ app.get('/anewsbycat', (req, res) => {
 
 app.get('/anewsbyid', (req, res) => {
     console.log(111);
-    var dId = req.query.did;
+    var dId = req.query.id;
 
-    var newsDetail = news.find(function (st) {
-        return st.id === dId;
+    var newsDetail = news.find(function (tin) {
+        return tin.id === dId;
+    })
+    res.send(newsDetail);
+})
+
+app.get('/catbyid', (req, res) => {
+    var dId = req.query.id;
+
+    var newsDetail = acategories.find(function (cat) {
+        return cat.id === dId;
     })
     res.send(newsDetail);
 })
@@ -91,6 +103,10 @@ app.get('/anewsbyid/:id', (req, res) => {
         return st.id === dId;
     })
     res.send(newsDetail);
+})
+
+app.get('/', function (req, res) {
+    res.sendFile(publicPath, 'index.html');
 })
 
 app.listen(port, () => {
