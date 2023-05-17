@@ -12,7 +12,7 @@ var cId = getParameterByName('cid');
 async function getData() {
     const ulElement = $("#list-news-by-cat");
     try {
-        var listNewsByCat = await axios.get(`http://localhost:3000/anewsbycat?cid=${cId}`);
+        var listNewsByCat = await axios.get(`http://localhost:3000/news-by-cat?cid=${cId}`);
         listNewsByCat = listNewsByCat.data;
 
         listNewsByCat.forEach(function (news) {
@@ -31,7 +31,7 @@ async function getData() {
 
         })
 
-        var catById = await axios.get(`http://localhost:3000/catbyid?id=${cId}`);
+        var catById = await axios.get(`http://localhost:3000/cat-by-id?id=${cId}`);
 
         catById = catById.data;
 

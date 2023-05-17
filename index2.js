@@ -44,22 +44,22 @@ app.get('/students', (req, res) => {
     res.send(students);
 })
 
-app.get('/studentsbyaddress', (req, res) => {
+app.get('/students-by-address', (req, res) => {
     var address = req.query.address;
 
-    var newStudents = students.filter(function (st) {
+    var listStudentsByAddress = students.filter(function (st) {
         return st.address === address;
     })
-    res.send(newStudents);
+    res.send(listStudentsByAddress);
 })
 
-app.get('/studentbyid', (req, res) => {
+app.get('/student-by-id', (req, res) => {
     var id = req.query.id;
 
-    var newStudent = students.find(function (st) {
+    var studentDetail = students.find(function (st) {
         return st.id === id;
     })
-    res.send(newStudent);
+    res.send(studentDetail);
 })
 
 app.listen(port, () => {

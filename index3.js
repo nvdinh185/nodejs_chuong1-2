@@ -40,11 +40,11 @@ const news = [
     }
 ]
 
-app.get('/anews', (req, res) => {
+app.get('/news', (req, res) => {
     res.send(news);
 })
 
-const acategories = [
+const categories = [
     {
         "id": "1",
         "name": "Thời sự"
@@ -63,44 +63,43 @@ const acategories = [
     }
 ]
 
-app.get('/acategories', (req, res) => {
-    res.send(acategories);
+app.get('/categories', (req, res) => {
+    res.send(categories);
 })
 
-app.get('/anewsbycat', (req, res) => {
+app.get('/news-by-cat', (req, res) => {
     var cId = req.query.cid;
 
-    var myNews = news.filter(function (st) {
+    var listNewsByCat = news.filter(function (st) {
         return st.catId === cId;
     })
-    res.send(myNews);
+    res.send(listNewsByCat);
 })
 
-app.get('/anewsbyid', (req, res) => {
-    console.log(111);
-    var dId = req.query.id;
+app.get('/news-by-id', (req, res) => {
+    var id = req.query.id;
 
     var newsDetail = news.find(function (tin) {
-        return tin.id === dId;
+        return tin.id === id;
     })
     res.send(newsDetail);
 })
 
-app.get('/catbyid', (req, res) => {
-    var dId = req.query.id;
+app.get('/cat-by-id', (req, res) => {
+    var id = req.query.id;
 
-    var newsDetail = acategories.find(function (cat) {
-        return cat.id === dId;
+    var newsDetail = categories.find(function (cat) {
+        return cat.id === id;
     })
     res.send(newsDetail);
 })
 
-app.get('/anewsbyid/:id', (req, res) => {
-    console.log(222);
-    var dId = req.params.id;
+// get by params
+app.get('/news-by-id/:id', (req, res) => {
+    var id = req.params.id;
 
     var newsDetail = news.find(function (st) {
-        return st.id === dId;
+        return st.id === id;
     })
     res.send(newsDetail);
 })

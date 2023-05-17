@@ -13,8 +13,8 @@ async function getData() {
 
     const detailElement = $("#detail");
     try {
-        var newsById = await axios.get(`http://localhost:3000/anewsbyid/${dId}`);
-        // var newsById = await axios.get(`http://localhost:3000/anewsbyid?id=${dId}`);
+        // var newsById = await axios.get(`http://localhost:3000/news-by-id/${dId}`);
+        var newsById = await axios.get(`http://localhost:3000/news-by-id?id=${dId}`);
 
         newsById = newsById.data;
 
