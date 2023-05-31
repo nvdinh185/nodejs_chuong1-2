@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 const port = 3000;
 
 app.use(express.json());
@@ -13,8 +12,7 @@ const users = [
     }
 ]
 
-const publicPath = path.join(__dirname, 'client');
-app.use(express.static(publicPath));
+app.use(express.static(__dirname + '/client'));
 
 app.post('/register', (req, res) => {
     var user = req.body;
@@ -34,7 +32,7 @@ app.post('/register', (req, res) => {
 })
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(publicPath, 'register.html'));
+    res.sendFile(__dirname + '/client/register.html');
 });
 
 app.listen(port, () => {
