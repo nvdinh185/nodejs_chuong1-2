@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 const port = 3000;
 
-
-const publicPath = path.join(__dirname, 'client-news');
-app.use(express.static(publicPath));
+app.use(express.static(__dirname + '/client-news'));
 
 const news = [
     {
@@ -88,10 +85,10 @@ app.get('/news-by-id', (req, res) => {
 app.get('/cat-by-id', (req, res) => {
     var id = req.query.id;
 
-    var newsDetail = categories.find(function (cat) {
+    var catDetail = categories.find(function (cat) {
         return cat.id === id;
     })
-    res.send(newsDetail);
+    res.send(catDetail);
 })
 
 // get by params
@@ -105,7 +102,7 @@ app.get('/news-by-id/:id', (req, res) => {
 })
 
 app.get('/', function (req, res) {
-    res.sendFile(publicPath, 'index.html');
+    res.sendFile(__dirname + '/client-news/index.html');
 })
 
 app.listen(port, () => {
