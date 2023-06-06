@@ -14,11 +14,7 @@ app.use(express.static(__dirname + '/client'));
 
 app.post('/register', function (req, res) {
     console.log('POST: ', req.body);
-    res.send('Hi');
-})
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/index1.html');
+    res.send('register');
 })
 
 app.listen(port, () => {

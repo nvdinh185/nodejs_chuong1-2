@@ -4,13 +4,9 @@ const port = 3000;
 
 app.use(express.static(__dirname + '/client'));
 
-app.get('/register', function (req, res) {
+app.get('/search', function (req, res) {
     console.log('GET: ', req.query);
-    res.send('Hello');
-})
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/index1.html');
+    res.send('search');
 })
 
 app.listen(port, () => {
