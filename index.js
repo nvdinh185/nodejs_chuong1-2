@@ -2,11 +2,14 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+app.use(express.static(__dirname + '/client'));
+
 const students = [
     {
         id: '1',
         name: "Dinh",
-        address: "hue"
+        address: "Hue"
     },
     {
         id: '2',
@@ -44,22 +47,31 @@ app.get('/students', (req, res) => {
     res.send(students);
 })
 
-app.get('/students-by-address', (req, res) => {
-    var address = req.query.address;
-
-    var listStudentsByAddress = students.filter(function (st) {
-        return st.address === address;
-    })
-    res.send(listStudentsByAddress);
+app.post('/students', (req, res) => {
+    students.push(req.body);
+    res.send('OK');
 })
 
-app.get('/student-by-id', (req, res) => {
-    var id = req.query.id;
-
-    var studentDetail = students.find(function (st) {
+app.put('/students/:id', (req, res) => {
+    var id = req.params.id;
+    var idx = students.findIndex(function (st) {
         return st.id === id;
-    })
-    res.send(studentDetail);
+    });
+    students.splice(idx, 1, req.body);
+    res.send('OK');
+})
+
+app.delete('/students/:id', (req, res) => {
+    var id = req.params.id;
+    var idx = students.findIndex(function (st) {
+        return st.id === id;
+    });
+    students.splice(idx, 1);
+    res.send('OK');
+})
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/client/index.html');
 })
 
 app.listen(port, () => {
