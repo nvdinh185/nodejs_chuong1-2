@@ -10,7 +10,7 @@ app.get('/register', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/index.html');
+    res.sendFile(__dirname + '/client/index1.html');
 })
 
 app.listen(port, () => {
