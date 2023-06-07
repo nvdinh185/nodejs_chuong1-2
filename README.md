@@ -6,6 +6,7 @@
 ![alt text](home.jpg)
 
 3. Chọn chức năng Đăng ký ở trang chủ, nhập thông tin username, password và fullname của user muốn đăng ký
+
 - Nếu đăng ký user đã tồn tại thì hiển thị thông báo lỗi:
 ![alt text](register_error.jpg)
 
@@ -13,6 +14,7 @@
 ![alt text](register_ok.jpg)
 
 4. Chọn chức năng Đăng nhập ở trang chủ, nhập thông tin username, password của user muốn đăng nhập
+
 - Nếu đăng nhập với user chưa tồn tại thì hiển thị thông báo lỗi:
 ![alt text](login_error.jpg)
 
