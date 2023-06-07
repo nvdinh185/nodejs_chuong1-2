@@ -21,7 +21,7 @@ form.addEventListener('submit', async function (e) {
 
         // console.log(results.data);
 
-        location = 'index.html';
+        location = 'index.html?msg=2';
     } catch (error) {
         var errorElement = document.querySelector('.error');
         errorElement.innerHTML = '<p style="color: red">Xảy ra lỗi!</p>';

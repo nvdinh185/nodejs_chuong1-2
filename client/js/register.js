@@ -19,7 +19,7 @@ form.addEventListener('submit', async function (e) {
             headers: { "Content-Type": "application/json" },
         });
 
-        location = 'index.html';
+        location = 'index.html?msg=1';
     } catch (error) {
         var errorElement = document.querySelector('.error');
         errorElement.innerHTML = '<p style="color: red">Xảy ra lỗi!</p>';

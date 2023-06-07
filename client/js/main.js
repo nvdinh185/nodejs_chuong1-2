@@ -29,3 +29,22 @@ async function getData() {
 }
 
 getData();
+
+function getParameterByName(name, url = location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+var msg = getParameterByName('msg');
+
+var msgElement = document.querySelector('#msg');
+msgElement.setAttribute('style', 'color: green; background: yellow');
+if (msg === '1') {
+    msgElement.innerText = 'Đăng ký thành công!';
+} else if (msg === '2') {
+    msgElement.innerText = 'Đăng nhập thành công!';
+}

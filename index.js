@@ -54,10 +54,6 @@ app.get('/users', (req, res) => {
     res.send(users);
 })
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/index.html');
-})
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })
