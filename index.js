@@ -53,8 +53,19 @@ app.get('/students-by-address', (req, res) => {
     res.send(listStudentsByAddress);
 })
 
+// get by query
 app.get('/student-by-id', (req, res) => {
     var id = req.query.id;
+
+    var studentDetail = students.find(function (st) {
+        return st.id === id;
+    })
+    res.send(studentDetail);
+})
+
+// get by params
+app.get('/student-by-id/:id', (req, res) => {
+    var id = req.params.id;
 
     var studentDetail = students.find(function (st) {
         return st.id === id;
