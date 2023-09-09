@@ -15,8 +15,7 @@ form.addEventListener('submit', async function (e) {
         var results = await axios({
             method: "POST",
             url: 'http://localhost:3000/register',
-            data: formValue,
-            headers: { "Content-Type": "application/json" },
+            data: formValue
         });
 
         console.log(results.data);
