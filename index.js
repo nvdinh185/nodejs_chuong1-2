@@ -5,68 +5,71 @@ const port = 3000;
 app.use(express.json());
 app.use(express.static(__dirname + '/client'));
 
-const students = [
+const courses = [
     {
         id: '1',
-        name: "Dinh",
-        address: "Hue"
+        name: 'Javascript',
+        description: 'Đây là khóa học Javascript cơ bản',
+        coin: 100
     },
     {
         id: '2',
-        name: "Nam",
-        address: "quang nam"
+        name: 'HTML - CSS',
+        description: 'Đây là khóa học HTML - CSS',
+        coin: 200
     },
     {
         id: '3',
-        name: "Tan",
-        address: "da nang"
+        name: 'ReactJS',
+        description: 'Đây là khóa học ReactJS',
+        coin: 0
     },
     {
         id: '4',
-        name: "Hung",
-        address: "hue"
+        name: 'NodeJS',
+        description: 'Đây là khóa học NodeJS',
+        coin: 300
     },
     {
         id: '5',
-        name: "Tri",
-        address: "quang tri"
-    },
-    {
-        id: '6',
-        name: "Anh",
-        address: "hue"
-    },
-    {
-        id: '7',
-        name: "Binh",
-        address: "da nang"
+        name: 'PHP',
+        description: 'Đây là khóa học PHP',
+        coin: 150
     }
 ]
 
-app.get('/students', (req, res) => {
-    res.send(students);
+app.get('/courses', (req, res) => {
+    res.send(courses);
 })
 
-app.post('/students', (req, res) => {
-    students.push(req.body);
+app.get('/courses/:id', (req, res) => {
+    var id = req.params.id;
+    var courseById = courses.find(function (st) {
+        return st.id === id;
+    });
+    res.send(courseById);
+})
+
+app.post('/courses', (req, res) => {
+    courses.push(req.body);
     res.send('OK');
 })
 
-app.put('/students/:id', (req, res) => {
+app.put('/courses/:id', (req, res) => {
     var id = req.params.id;
-    var idx = students.findIndex(function (st) {
+    var idx = courses.findIndex(function (st) {
         return st.id === id;
     });
-    students.splice(idx, 1, req.body);
+    courses.splice(idx, 1, req.body);
     res.send('OK');
 })
 
-app.delete('/students/:id', (req, res) => {
+app.delete('/courses/:id', (req, res) => {
     var id = req.params.id;
-    var idx = students.findIndex(function (st) {
+    var idx = courses.findIndex(function (st) {
         return st.id === id;
     });
-    students.splice(idx, 1);
+    courses.splice(idx, 1);
     res.send('OK');
 })
 
