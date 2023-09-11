@@ -104,10 +104,6 @@ createBtn.click(async function () {
             $(errorElement).text('Yêu cầu nhập!');
             input.addClass('invalid');
             return true;
-        } else {
-            $(errorElement).attr('style', 'display: none;');
-            input.removeClass('invalid');
-            return false;
         }
     }
 })
