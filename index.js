@@ -76,29 +76,29 @@ app.get('/news-by-cat', (req, res) => {
 app.get('/news-by-id', (req, res) => {
     var id = req.query.id;
 
-    var newsDetail = news.find(function (tin) {
-        return tin.id === id;
+    var newsById = news.find(function (news) {
+        return news.id === id;
     })
-    res.send(newsDetail);
+    res.send(newsById);
 })
 
 app.get('/cat-by-id', (req, res) => {
     var id = req.query.id;
 
-    var catDetail = categories.find(function (cat) {
+    var catById = categories.find(function (cat) {
         return cat.id === id;
     })
-    res.send(catDetail);
+    res.send(catById);
 })
 
 // get by params
 app.get('/news-by-id/:id', (req, res) => {
     var id = req.params.id;
 
-    var newsDetail = news.find(function (st) {
-        return st.id === id;
+    var newsById = news.find(function (news) {
+        return news.id === id;
     })
-    res.send(newsDetail);
+    res.send(newsById);
 })
 
 app.get('/', function (req, res) {
