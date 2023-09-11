@@ -25,6 +25,7 @@ async function getData() {
 
     } catch (err) {
         console.log('Lỗi ' + err);
+        table.innerHTML = '<p style="color: red; font-style: italic">Xảy ra lỗi khi lấy dữ liệu!</p>';
     }
 }
 

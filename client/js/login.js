@@ -24,6 +24,6 @@ form.addEventListener('submit', async function (e) {
         location = 'index.html?msg=2';
     } catch (error) {
         var errorElement = document.querySelector('.error');
-        errorElement.innerHTML = '<p style="color: red">Xảy ra lỗi!</p>';
+        errorElement.innerHTML = '<p style="color: red; font-style: italic">Xảy ra lỗi khi đăng nhập!</p>';
     }
 })
